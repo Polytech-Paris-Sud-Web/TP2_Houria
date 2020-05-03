@@ -14,7 +14,6 @@
         <input class="form-control" formControlName="authors">
       </label>
       <br />
-      <!--button class="btn btn-success" [disabled]="articleForm.invalid" type="submit">Save</button -->
-      <button type="button" id="submitCreation" (click)="onSubmitNewArticle(formCreation)">Save</button>
+      <button class="btn btn-success" [disabled]="articleForm.invalid" type="submit"><a routerLink="/articles">Save</a></button>
    </div>
   </form>

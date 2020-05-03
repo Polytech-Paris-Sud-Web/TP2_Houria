@@ -37,6 +37,12 @@ export class ArticleCreationComponent implements OnInit {
       content : formModel.content,
       authors : formModel.authors
     }
+    this.articleForm = this.fb.group({
+      title: ["", null],
+      content: ["", null],
+      authors: ["", null],
+    });
     this.articleService.add(rawArticle).subscribe((article) => this.newArticle.emit(article));
   }
+
 }
