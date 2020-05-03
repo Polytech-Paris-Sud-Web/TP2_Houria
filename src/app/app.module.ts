@@ -7,14 +7,16 @@ import { ArticlesComponent } from './articles/articles.component';
 import {ArticleService} from './services/article.service';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add the imports!
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArticleSearchComponent } from './article-search/article-search.component'; // <== add the imports!
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     ArticlesComponent,
-    ArticleCreationComponent
+    ArticleCreationComponent,
+    ArticleSearchComponent
   ],
   imports: [
     BrowserModule,

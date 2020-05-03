@@ -1,19 +1,31 @@
-<a routerLink="/articles" >List Articles</a>
-  <p>Create your article:</p>
-  <form [formGroup]="articleForm" (ngSubmit)="createArticle()">
-    <div class="form-group">
-      <label class="center-block">title:
-        <input class="form-control" formControlName="title">
-      </label>
-      <br />
-      <label class="center-block">content:
-        <textarea class="form-control" formControlName="content"></textarea>
-      </label>
-      <br />
-      <label class="center-block">authors:
-        <input class="form-control" formControlName="authors">
-      </label>
-      <br />
-      <button class="btn btn-success" [disabled]="articleForm.invalid" type="submit"><a routerLink="/articles">Save</a></button>
-   </div>
-  </form>
+<header>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#">List Articles</a></li>
+        <li><a href="#" routerLink="/create" >New Article</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<body style="font-family: 'Work Sans', sans-serif;">
+<p>Create your article:</p>
+      <form [formGroup]="articleForm" (ngSubmit)="createArticle()">
+        <div class="form-group">
+          <label class="center-block">Title:
+            <input class="form-control" formControlName="title">
+          </label>
+          <br />
+          <label class="center-block">Content:
+            <textarea class="form-control" formControlName="content"></textarea>
+          </label>
+          <br />
+          <label class="center-block">Authors:
+            <input class="form-control" formControlName="authors">
+          </label>
+          <br />
+          <button class="btn btn-success" [disabled]="articleForm.invalid" type="submit">Save</button>
+        </div>
+      </form>
+  </body>

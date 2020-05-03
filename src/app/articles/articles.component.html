@@ -1,4 +1,30 @@
-<a routerLink="/create" >Create New Article</a>
-<div *ngFor="let article of this.articles() | async">
-  <app-article  [article]="article" (deletedArticle)="delete($event)"></app-article>
-</div>
+<head>
+  <title>TP2 - Algorithmie pour le web</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <meta charset="utf-8"/>
+</head>
+
+<header>
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+          </div>
+        </li>
+        <li><a href="#">List Articles</a></li>
+        <li><a href="#" routerLink="/create" >New Article</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<body style="font-family: 'Work Sans', sans-serif;">
+  <div *ngFor="let article of this.articles() | async">
+    <app-article  [article]="article" (deletedArticle)="delete($event)"></app-article>
+  </div>
+</body>
+

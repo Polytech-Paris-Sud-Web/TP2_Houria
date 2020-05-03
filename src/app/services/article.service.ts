@@ -23,4 +23,9 @@ export class ArticleService {
   public add(newArticle: RawArticle): Observable<Article> {
     return this.http.post<Article>(`http://localhost:3000/articles`, newArticle);
   }
+
+  public search(text: string): Observable<Article[]> {
+      return this.http.get<Article[]>("http://localhost:3000/articles?q=" + text);
+  }
+
 }

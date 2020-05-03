@@ -1,0 +1,14 @@
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<div *ngFor="let article of this.results() | async">
+    <app-article [article]="article" (deletedArticle)="delete($event)"></app-article>
+</div>
+
+<div class="search-box">
+    <input class="search-txt" type="text" name="" placeholder="Type to search">
+    <a class="search-btn" href="#">
+        <i class="fas fa-search"></i>
+    </a>
+</div>
