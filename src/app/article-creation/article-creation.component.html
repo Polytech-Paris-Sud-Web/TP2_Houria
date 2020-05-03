@@ -1,5 +1,4 @@
 <a routerLink="/articles" >List Articles</a>
-<form id="formCreation" #formCreation="ngForm">
   <p>Create your article:</p>
   <form [formGroup]="articleForm" (ngSubmit)="createArticle()">
     <div class="form-group">
@@ -18,4 +17,4 @@
       <!--button class="btn btn-success" [disabled]="articleForm.invalid" type="submit">Save</button -->
       <button type="button" id="submitCreation" (click)="onSubmitNewArticle(formCreation)">Save</button>
    </div>
-</form>
+  </form>

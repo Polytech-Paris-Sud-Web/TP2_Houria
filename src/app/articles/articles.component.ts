@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css']
 })
+
 export class ArticlesComponent implements OnInit {
 
   private _articles: Observable<Article[]>;
@@ -27,6 +28,10 @@ export class ArticlesComponent implements OnInit {
     this.articleService.delete(article.id).subscribe(() => {
       this._articles = this.articleService.get();
     });
+  }
+ 
+  newArticle(article: Article){
+    this._articles = this.articleService.get();
   }
 
 }

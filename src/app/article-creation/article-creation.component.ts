@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output} from '@angular/core';
 import { ArticleService } from '../services/article.service';
-import { NgForm } from '@angular/forms';
 import { Article } from '../models/article';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {RawArticle} from "../models/raw-article";
 
 
 @Component({
@@ -14,30 +14,29 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class ArticleCreationComponent implements OnInit {
 
-  newArticle: Article = {
-    id: null,
-    title: '',
-    content: '',
-    authors: ''
-  };
+  articleForm : FormGroup;
 
+  @Output()
+  newArticle : EventEmitter<RawArticle> = new EventEmitter();
 
-  constructor(private articleService: ArticleService, private router: Router) { }
-
-  onSubmitNewArticle(creationForm: NgForm) {
-    if (creationForm.valid) {
-      this.articleService.post(this.newArticle).subscribe(
-        (result) => {
-          console.log(result);
-          this.router.navigate(['/articles']);
-        }, (err) => {
-          console.log(err);
-        }
-      );
-    }
+  constructor(private fb: FormBuilder, private articleService : ArticleService) {
+    this.articleForm = this.fb.group({
+      title: ['Fake Title', Validators.required ],
+      content : ['', Validators.required ],
+      authors : ['', Validators.required ],
+    });
   }
 
   ngOnInit() {
   }
 
+  createArticle(){
+    const formModel = this.articleForm.value;
+    const rawArticle : RawArticle = {
+      title : formModel.title,
+      content : formModel.content,
+      authors : formModel.authors
+    }
+    this.articleService.add(rawArticle).subscribe((article) => this.newArticle.emit(article));
+  }
 }
